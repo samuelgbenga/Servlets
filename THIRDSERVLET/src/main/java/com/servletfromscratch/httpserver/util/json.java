@@ -8,7 +8,7 @@ import java.io.IOException;
 public class json {
 
     // the objectMapper itself
-    private static ObjectMapper myObjectMapper = defaultObjectMapper();
+    private static final ObjectMapper myObjectMapper = defaultObjectMapper();
 
     // create and instance of the Object mapper
     // and make sure it did not fail during deserialization
@@ -58,4 +58,8 @@ public class json {
         }
        return ow.writeValueAsString(obj);
     }
+
+
+
+
 }

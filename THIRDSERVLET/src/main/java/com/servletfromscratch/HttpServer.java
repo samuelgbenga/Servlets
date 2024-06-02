@@ -22,9 +22,9 @@ public class HttpServer {
 
         Configuration config = ConfigurationManager.getInstance().getConfig();
 
-        LOGGER.info("using port: " + config.getPort());
-        LOGGER.info("using webroot: " + config.getWebroot());
-        LOGGER.info("using jsonPath: " + config.getJson());
+        LOGGER.info("using port: {}", config.getPort());
+        LOGGER.info("using webroot: {}", config.getWebroot());
+        LOGGER.info("using jsonPath: {}", config.getJson());
 
         // Test run a simple server
 

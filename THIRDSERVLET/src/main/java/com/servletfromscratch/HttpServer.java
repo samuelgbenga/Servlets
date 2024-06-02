@@ -2,27 +2,40 @@ package com.servletfromscratch;
 
 import com.servletfromscratch.httpserver.config.Configuration;
 import com.servletfromscratch.httpserver.config.ConfigurationManager;
+import com.servletfromscratch.httpserver.core.ServerListenerThread;
+
+import java.io.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class HttpServer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(HttpServer.class);
+
     public static void main(String[] args) {
 
-        System.out.println("Server starting......");
+        LOGGER.info("Starting HTTP Server.......");
 
-//        ConfigurationManager.loadConfiguration("src/main/resources/http.json");
-//
-//        Configuration config = ConfigurationManager.getConfiguration();
-//        System.out.println("port: "+config.getPort());
-//        System.out.println("webroot: "+config.getWebroot());
-
-        ConfigurationManager instance = ConfigurationManager.getInstance();
 
         ConfigurationManager.getInstance().loadConfig("src/main/resources/http.json");
 
         Configuration config = ConfigurationManager.getInstance().getConfig();
 
-        System.out.println("using port: " + config.getPort());
-        System.out.println("using webroot: " + config.getWebroot());
+        LOGGER.info("using port: " + config.getPort());
+        LOGGER.info("using webroot: " + config.getWebroot());
+        LOGGER.info("using jsonPath: " + config.getJson());
+
+        // Test run a simple server
+
+        try {
+            ServerListenerThread serverListenerThread = new ServerListenerThread(config.getPort(),
+                    config.getWebroot(), config.getJson());
+            serverListenerThread.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }

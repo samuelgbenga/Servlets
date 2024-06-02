@@ -107,18 +107,7 @@ public class ConnectionWorkerThread extends Thread{
     }
 
 
-//    private final Socket socket;
-//    private final String webRoot;
-//    private final String getJson;
-//
-//    private final static Logger LOGGER = LoggerFactory.getLogger(ConnectionWorkerThread.class);
-//
-//    public ConnectionWorkerThread(Socket socket, String webRoot, String getJson) {
-//        this.socket = socket;
-//        this.webRoot = webRoot;
-//        this.getJson = getJson;
-//    }
-//
+
 ////    @Override
 //    public void run() {
 //
@@ -195,4 +184,7 @@ public class ConnectionWorkerThread extends Thread{
 //
 //
 //    }
+
+
+
 }
